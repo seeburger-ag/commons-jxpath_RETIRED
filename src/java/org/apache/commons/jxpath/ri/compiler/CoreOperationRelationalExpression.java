@@ -85,7 +85,7 @@ public abstract class CoreOperationRelationalExpression extends CoreOperation {
             return containsMatch((Iterator) left, right);
         }
         if (right instanceof Iterator) {
-            return containsMatch(left, (Iterator) right);
+            return containsMatch(left, (Iterator) right); // changed order of parameters in order to fix bug#30963.
         }
         double ld = InfoSetUtil.doubleValue(left);
         if (Double.isNaN(ld)) {
@@ -135,7 +135,7 @@ public abstract class CoreOperationRelationalExpression extends CoreOperation {
      * @param value to look for
      * @return whether a match was found
      */
-    private boolean containsMatch(Object value, Iterator it) {
+    private boolean containsMatch(Object value, Iterator it) { // added to fix bug#30963
         while (it.hasNext()) {
             Object element = it.next();
             if (compute(value, element)) {
