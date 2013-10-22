@@ -720,7 +720,7 @@ public class SimplePathInterpreter {
         }
         else if (value instanceof String && isValidIndex(value.toString()))
         {
-            return Integer.parseInt(value.toString());
+            return Integer.parseInt(value.toString())-1;
         }
 
         return InfoSetUtil.booleanValue(value) ? 0 : -1;
